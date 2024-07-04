@@ -1,5 +1,5 @@
 
-import {doc,end_of_sections,margin_y,margin_border_y,width_of_A4,margin_border_x} from '../shared_parameter.js';
+import {doc,end_of_sections,margin_y,margin_border_y,width_of_A4,margin_border_x,id_color} from '../shared_parameter.js';
 
 
 
@@ -14,7 +14,7 @@ const colGap = 10; // Gap between columns of grids
 const offsetX = 50; // X-offset for the starting position
 const offsetY = 50; // Y-offset for the starting position
 
-export function student_number() {
+export function student_number(isColored) {
   for (let row = 0; row < rows; row++) {
     for (let col = 0; col < cols; col++) {
       const startX =
@@ -30,7 +30,7 @@ export function student_number() {
         for (let j = 0; j < squaresPerRow; j++) {
           const x = startX + j * (squareSize + gap);
           const y = startY + i * (squareSize + gap);
-          doc.rect(x, y, squareSize, squareSize).stroke();
+          doc.rect(x, y, squareSize, squareSize);if(isColored){doc.fillColor(id_color[col]).fill();doc.stroke();}
           doc
             .fontSize(8)
             .text(j, x + squareSize / 2 - 4, y + squareSize / 2 - 3, {

@@ -1,7 +1,9 @@
-import {doc,end_of_sections,margin_y,margin_border_y,width_of_A4,high_of_A4,margin_border_x,margin_x} from './shared_parameter.js';
-import {add_new_page}from "./utielities/new_page.js"
+import {quesColors,doc,end_of_sections,margin_y,margin_border_y,width_of_A4,high_of_A4,margin_border_x,margin_x} from './shared_parameter.js';
+import {add_new_page}from "./utielities/new_page.js";
 
-export function draw_text_box(num_of_lines, ques_name,png) {
+
+export function draw_text_box(isColored,num_of_lines, ques_name,png) {
+  let color=quesColors.pop();
     let perivious_element = end_of_sections[end_of_sections.length - 1];
 
     //doc.text(ques_name, 280, perivious_element + margin_y / 2);
@@ -20,7 +22,9 @@ export function draw_text_box(num_of_lines, ques_name,png) {
         start_of_rect,
         width_of_A4 - margin_border_x * 2 - margin_x * 2,
         hight_of_rect
-      );
+      );    if(isColored){
+        doc.fillColor(color).fill();
+      }
       doc.stroke();
       if (hight_of_rect == rest_high_for_page) {
         end_of_sections.push(0);
@@ -48,7 +52,9 @@ export function draw_text_box(num_of_lines, ques_name,png) {
           start_of_rect,
           width_of_A4 - margin_border_x * 2 - margin_x * 2,
           higt_of_first_rect
-        );
+        );if(isColored){
+          doc.fillColor(color).fill();
+        }
         doc.stroke();
       }
       else{
@@ -66,7 +72,7 @@ export function draw_text_box(num_of_lines, ques_name,png) {
         high_of_A4 - margin_border_y * 2 - margin_y * 3.5 - 9;
 
       while (rest_high >= high_of_box_for_all_page) {
-        add_new_page(png);
+        add_new_page(png,isColored);
         if(temp){
           temp=false;
           doc.text(ques_name, 280, perivious_element + margin_y / 2);
@@ -77,12 +83,14 @@ export function draw_text_box(num_of_lines, ques_name,png) {
           end_of_sections[end_of_sections.length - 1] + margin_y ,
           width_of_A4 - margin_border_x * 2 - margin_x * 2,
           high_of_box_for_all_page
-        );
+        );if(isColored){
+          doc.fillColor(color).fill();
+        }
         doc.stroke();
         rest_high -= high_of_box_for_all_page;
       }
       if (rest_high) {
-        add_new_page(png);
+        add_new_page(png,isColored);
         if(temp){
           temp=false;
           doc.text(ques_name, 280, perivious_element + margin_y / 2);
@@ -94,7 +102,9 @@ export function draw_text_box(num_of_lines, ques_name,png) {
           end_of_sections[end_of_sections.length - 1] + margin_y,
           width_of_A4 - margin_border_x * 2 - margin_x * 2,
           rest_high
-        );
+        );if(isColored){
+          doc.fillColor(color).fill();
+        }
         doc.stroke();
 
         end_of_sections.push(

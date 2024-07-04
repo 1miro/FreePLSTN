@@ -5,6 +5,8 @@ let distance_btn_circle = 8;
 
 
 export function draw_circles(
+    isColored,
+    color,
     num_q_for_this_rect,
     num_question_for_each_line,
     num_question_for_each_colum_of_this_rect,
@@ -37,7 +39,7 @@ export function draw_circles(
         center_y = const_center_y + i * (2 * radios + distance_btn_circle);
         for (let j = 0; j < lst.length; j++) {
           center_x = const_center_x + j * (2 * radios + distance_btn_circle);
-          doc.circle(center_x, center_y, radios);
+          doc.circle(center_x, center_y, radios);if(isColored){doc.fillColor(color).fill();doc.stroke();}
           doc.fontSize(8);
           doc.text(`${lst[j]}`, center_x - 3, center_y - 3);
   

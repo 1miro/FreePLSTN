@@ -4,9 +4,18 @@ import {addBarcodeToPage}from './barcode.js'
 import {doc} from '../shared_parameter.js';
 
 
-export function add_new_page(png) {
+let page_num=2;
+
+function create_page_num(isColored){
+  doc.rect(150,12,18,18);doc.fontSize(15).text(page_num,156,17);if(isColored){doc.fillColor('brown').fill();}doc.stroke();
+  page_num+=1;
+
+}
+export function add_new_page(png,isColored) {
     doc.addPage({ size: "A4" });
-    student_number();
+    create_page_num(isColored)
+    student_number(isColored);
     border_arucomarker();
     addBarcodeToPage(png);
   }
+

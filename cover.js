@@ -1,16 +1,11 @@
 import bwipjs from 'bwip-js';
-import {doc} from './shared_parameter.js';
 import{border_arucomarker}from './utielities/border_arucomarker.js'
+import {doc,quesColors,id_color} from "./shared_parameter.js";
 
 
-export function create_cover(){
+export const addCoverToDoc = (isColored,university, subject, time, code) => {
   const barcodeX = 430; // X-coordinate of the barcode
   const barcodeYTop = 320; // Y-coordinate of the barcode
-  
-  let code = "15CD40F";
-  let university="Tanta University"
-  let subject = "Graduation Project"
-  let time = 3
   
   // Add barcode at the specified position
   const barcodeOptions = {
@@ -21,7 +16,6 @@ export function create_cover(){
       includetext: false, // Include human-readable text
       textxalign: 'center', // Text alignment
   };
-  
   // Generate barcode asynchronously
   
   bwipjs.toBuffer(barcodeOptions, (err, png) => {
@@ -36,7 +30,8 @@ export function create_cover(){
       doc.image(png, barcodeX, barcodeYTop, { width: 100, height: 30 });
     };
   
-  
+    doc.rect(150,12,20,20);doc.fontSize(18).text("1",156,17);if(isColored){doc.fillColor('brown').fill()};doc.stroke();
+
     border_arucomarker();
 
   
@@ -62,7 +57,7 @@ export function create_cover(){
           for (let j = 0; j < squaresPerRow; j++) {
             const x = startX + j * (squareSize + gap);
             const y = startY + i * (squareSize + gap);
-            doc.rect(x, y, squareSize, squareSize).stroke();
+            doc.rect(x, y, squareSize, squareSize);if(isColored){doc.fillColor(id_color[col]).fill();doc.stroke();}
             doc.fontSize(8).text(j, x + squareSize / 2 - 4, y + squareSize / 2 - 3, {
               width: squareSize,
               height: squareSize,
@@ -79,14 +74,14 @@ export function create_cover(){
   
   
   // University and Exam Information with logo
-  doc.image('tanta_univ.png', 450, 10, { width: 130, height: 130 });//the pic will be dynamic 
-  doc.fontSize(20).text(`${university}`, { align: 'left', rtl: true });
+  doc.image('tanta_univ.png', 400, 50, { width: 80, height: 80 });//the pic will be dynamic 
+  doc.fontSize(20).text(`${university}`,150,80);
   doc.moveDown(2);
   
   // Student Information Box
-  const infoBoxX = 40;
+  const infoBoxX = 45;
   const infoBoxY = 140;
-  const infoBoxWidth = 520;
+  const infoBoxWidth = 505;
   const infoBoxHeight = 220;
   doc.rect(infoBoxX  , infoBoxY  , infoBoxWidth  , infoBoxHeight).stroke();
   
@@ -98,16 +93,16 @@ export function create_cover(){
   doc.text('Date:', infoBoxX + 10, infoBoxY + 160, { rtl: true });
   doc.text('Subject:', infoBoxX + 10, infoBoxY + 190, { rtl: true });
   
-  doc.rect(infoBoxX + 90, infoBoxY + 5 , 410, 25).stroke();
-  doc.rect(infoBoxX + 90, infoBoxY + 35 , 410, 25).stroke();
+  doc.rect(infoBoxX + 90, infoBoxY + 5 , 410, 25);if(isColored){doc.fillColor(quesColors.pop()).fill();doc.stroke();}
+  doc.rect(infoBoxX + 90, infoBoxY + 35 , 410, 25);if(isColored){doc.fillColor(quesColors.pop()).fill();doc.stroke();}
   student_number()
-  doc.rect(infoBoxX + 90, infoBoxY + 85 , 410, 25).stroke();
-  doc.rect(infoBoxX + 90, infoBoxY + 115 , 410, 25).stroke();
-  doc.rect(infoBoxX + 90, infoBoxY + 145 , 410, 25).stroke();
+  doc.rect(infoBoxX + 90, infoBoxY + 85 , 410, 25);if(isColored){doc.fillColor(quesColors.pop()).fill();doc.stroke();}
+  doc.rect(infoBoxX + 90, infoBoxY + 115 , 410, 25);if(isColored){doc.fillColor(quesColors.pop()).fill();doc.stroke();}
+  doc.rect(infoBoxX + 90, infoBoxY + 145 , 410, 25);if(isColored){doc.fillColor(quesColors.pop()).fill();doc.stroke();}
   
-  doc.rect(infoBoxX + 90, infoBoxY + 175 , 280, 40).stroke();
+  doc.rect(infoBoxX + 90, infoBoxY + 175 , 280, 40);if(isColored){doc.fillColor(quesColors.pop()).fill();doc.stroke();}
   doc.fontSize(16).text(`${subject}`, infoBoxX + 100, infoBoxY + 190, { rtl: true });
-  doc.rect(infoBoxX + 380, infoBoxY + 175, 120, 40).stroke(); // Box for Subject Code
+  doc.rect(infoBoxX + 380, infoBoxY + 175, 120, 40);if(isColored){doc.fillColor(quesColors.pop()).fill();doc.stroke();} // Box for Subject Code
   addBarcodeToPage()
   
   // doc.moveTo(infoBoxX + 10, infoBoxY + 30).lineTo(infoBoxX + 450, infoBoxY + 30).stroke();
@@ -127,9 +122,9 @@ export function create_cover(){
   doc.moveDown(10);
   
   // Instructions Box
-  const instructionsBoxX = 40;
+  const instructionsBoxX = 45;
   const instructionsBoxY = 390;
-  const instructionsBoxWidth = 520;
+  const instructionsBoxWidth = 505;
   const instructionsBoxHeight = 400;
   doc.rect(instructionsBoxX, instructionsBoxY, instructionsBoxWidth, instructionsBoxHeight).stroke();
   

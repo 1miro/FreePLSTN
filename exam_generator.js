@@ -1,18 +1,24 @@
 import bwipjs from "bwip-js";
 import {doc} from './shared_parameter.js';
-//import{student_number}from './utielities/student_id.js'
-//import{border_arucomarker}from './utielities/border_arucomarker.js'
+
 import {checkAndDrawMSQ} from './MSQ.js'
 import {checkAndDrawTF} from './T_F.js'
 import {draw_text_box} from './text_question.js'
-//import {addBarcodeToPage}from './utielities/barcode.js'
-import {create_cover} from "./cover.js";
+import {addCoverToDoc} from "./cover.js";
 import {add_new_page}from "./utielities/new_page.js"
+import fs from "fs";
 
 
 
 // Adding functionality
 doc.initForm();
+
+const args = process.argv.slice(2);
+
+const isColored = args.includes('--isColored');
+const filename = args.find(arg => arg.endsWith('.pdf')) || 'output.pdf';
+doc.pipe(fs.createWriteStream(filename));// Saving the pdf file in root directory.
+
 
 // Add barcode at the specified position
 const barcodeOptions = {
@@ -24,25 +30,26 @@ const barcodeOptions = {
   textxalign: "center", // Text alignment
 };
 
+addCoverToDoc(isColored,'Tanta University', 'Graduation Project', 3, '15CD40F');
 
 bwipjs.toBuffer(barcodeOptions, (err, png) => {
   if (err) {
     console.error("Error generating barcode:", err);
     return;
   }
-  create_cover();
-  add_new_page(png)
+
+  add_new_page(png,isColored)
 
 let num_MSQ=80;
 let num_TF=45;
 
 
-  checkAndDrawMSQ(png,num_MSQ);
-  checkAndDrawTF(png,num_TF);
+  checkAndDrawMSQ(isColored,png,num_MSQ);
+  checkAndDrawTF(isColored,png,num_TF);
 
-  draw_text_box(50, "q1",png);
-  draw_text_box(40, "q2",png);
-  draw_text_box(25, "q3",png);
+  draw_text_box(isColored,50, "q1",png);
+  draw_text_box(isColored,40, "q2",png);
+  draw_text_box(isColored,25, "q3",png);
 
   /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

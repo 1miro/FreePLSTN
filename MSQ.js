@@ -23,6 +23,8 @@ const step_x = 120;
 const for_const_center_x = 7;
 
 function draw_MSQ(
+  isColored,
+  color,
   num_q_for_this_rect,
   num_question_for_each_line,
   num_question_for_each_colum_of_this_rect,
@@ -44,6 +46,8 @@ function draw_MSQ(
   );
   //draw_ABCD(start_of_this_rect);
   draw_circles(
+    isColored,
+    color,
     num_q_for_this_rect,
     num_question_for_each_line,
     num_question_for_each_colum_of_this_rect,
@@ -55,7 +59,7 @@ function draw_MSQ(
   );
 }
 
-export function checkAndDrawMSQ(png, num_MSQ) {
+export function checkAndDrawMSQ(isColored,png, num_MSQ) {
   num_question = num_MSQ;
   let perivious_element = end_of_sections[end_of_sections.length - 1];
   doc.text("MSQ", 280, perivious_element + margin_y / 2);
@@ -71,14 +75,19 @@ export function checkAndDrawMSQ(png, num_MSQ) {
     hight_of_rect <=
     high_of_A4 - start_of_rec - margin_border_y - margin_y - radios * 2
   ) {
+
     doc.rect(
       margin_border_x + margin_x,
       start_of_rec,
       width_of_A4 - 2 * margin_border_x - 2 * margin_x,
       hight_of_rect
-    ); //.fillColor('purple').fill();
-    doc.stroke();
+    );
+    if(isColored){
+      doc.fillColor('purple').fill();
+    } ;    doc.stroke();
     draw_MSQ(
+      isColored,
+      'purple',
       num_question,
       num_question_for_each_line,
       num_question_for_each_colum,
@@ -118,10 +127,14 @@ export function checkAndDrawMSQ(png, num_MSQ) {
         start_of_first_rect,
         width_of_A4 - margin_border_x * 2 - margin_x * 2,
         higt_of_first_rect
-      ); //.fillColor('purple').fill();
+      );    if(isColored){
+        doc.fillColor('purple').fill();
+      }
       doc.stroke();
 
       draw_MSQ(
+        isColored,
+        'purple',
         num_ques_for_first_rect,
         num_question_for_each_line,
         num_ques_for_each_colum_of_first_rect,
@@ -148,7 +161,6 @@ export function checkAndDrawMSQ(png, num_MSQ) {
       num_of_remining_ques / num_ques_for_A4_page
     );
     let start_of_counting_of_current_page = num_ques_for_first_rect; //84;
-    //console.log(num_of_remining_ques, num_of_remining_A4_pages)
     //second rect
 
     for (let i = 0; i < num_of_remining_A4_pages; i++) {
@@ -168,7 +180,7 @@ export function checkAndDrawMSQ(png, num_MSQ) {
         (num_ques_for_each_colum_of_rect + 1) * distance_btn_circle;
       console.log(higt_of_rect);
 
-      add_new_page(png);
+      add_new_page(png,isColored);
       start_of_rect =
         end_of_sections[end_of_sections.length - 1] + margin_y / 2;
 
@@ -177,9 +189,13 @@ export function checkAndDrawMSQ(png, num_MSQ) {
         start_of_rect,
         width_of_A4 - margin_border_x * 2 - margin_x * 2,
         higt_of_rect
-      ); //.fillColor('purple').fill();
+      );    if(isColored){
+        doc.fillColor('purple').fill();
+      } 
       doc.stroke();
       draw_MSQ(
+        isColored,
+        'purple',
         num_ques_for_rect,
         num_question_for_each_line,
         num_ques_for_each_colum_of_rect,

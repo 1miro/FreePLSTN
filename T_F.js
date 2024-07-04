@@ -16,6 +16,8 @@ const for_const_center_x=6;
 
 
 function draw_TF(
+  isColored,
+  color,
   num_q_for_this_rect,
   num_question_for_each_line,
   num_question_for_each_colum_of_this_rect,
@@ -36,6 +38,8 @@ function draw_TF(
   );
   //draw_ABCD(start_of_this_rect);
   draw_circles(
+    isColored,
+    color,
     num_q_for_this_rect,
     num_question_for_each_line,
     num_question_for_each_colum_of_this_rect,
@@ -47,7 +51,7 @@ function draw_TF(
   );
 }
 
-export function checkAndDrawTF(png,num_TF) {
+export function checkAndDrawTF(isColored,png,num_TF) {
   num_question_TF=num_TF;
   let perivious_element = end_of_sections[end_of_sections.length - 1];
   doc.text("T&F", 280, perivious_element + margin_y / 2);
@@ -71,9 +75,12 @@ export function checkAndDrawTF(png,num_TF) {
       start_of_rec,
       width_of_A4 - 2 * margin_border_x - 2 * margin_x,
       hight_of_rect
-    ); //.fillColor('purple').fill();
+    ); if (isColored){
+      doc.fillColor('red').fill();}
     doc.stroke();
     draw_TF(
+      isColored,
+      'red',
       num_question_TF,
       num_question_for_each_line_TF,
       num_question_for_each_colum,
@@ -110,10 +117,13 @@ export function checkAndDrawTF(png,num_TF) {
         start_of_first_rect,
         width_of_A4 - margin_border_x * 2 - margin_x * 2,
         higt_of_first_rect
-      ); //.fillColor('purple').fill();
+      ); if (isColored){
+        doc.fillColor('red').fill();} //.fillColor('purple').fill();
       doc.stroke();
 
       draw_TF(
+        isColored,
+        'red',
         num_ques_for_first_rect,
         num_question_for_each_line_TF,
         num_ques_for_each_colum_of_first_rect,
@@ -157,7 +167,7 @@ export function checkAndDrawTF(png,num_TF) {
         (num_ques_for_each_colum_of_rect + 1) * distance_btn_circle;
       console.log(higt_of_rect);
 
-      add_new_page(png);
+      add_new_page(png,isColored);
       start_of_rect =
         end_of_sections[end_of_sections.length - 1] + margin_y / 2;
 
@@ -166,9 +176,12 @@ export function checkAndDrawTF(png,num_TF) {
         start_of_rect,
         width_of_A4 - margin_border_x * 2 - margin_x * 2,
         higt_of_rect
-      ); //.fillColor('purple').fill();
+      ); if (isColored){
+        doc.fillColor('red').fill();} //.fillColor('purple').fill();
       doc.stroke();
       draw_TF(
+        isColored,
+        'red',
         num_ques_for_rect,
         num_question_for_each_line_TF,
         num_ques_for_each_colum_of_rect,
