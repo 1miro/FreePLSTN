@@ -12,15 +12,17 @@ import { add_new_page } from "./utielities/new_page.js";
 import { get_num_question_for_each_colum } from "./shared_func/get_num_question_for_each_colum.js";
 import { draw_123 } from "./shared_func/draw_123.js";
 import { draw_circles } from "./shared_func/draw_circles.js";
+import { draw_ABCDE_TF } from "./shared_func/draw_ABCDE_TF.js";
 
-let radios = 5;
+
+let radios = 10;
 let num_question;
-let num_question_for_each_line = 4;
+let num_question_for_each_line = 3;
 let distance_btn_circle = 8;
 
 let lst_MSQ = ["A", "B", "C", "D", "E"];
-const step_x = 120;
-const for_const_center_x = 7;
+const step_x = 160;
+const for_const_center_x = 3.7;
 
 function draw_MSQ(
   isColored,
@@ -35,6 +37,8 @@ function draw_MSQ(
   step_x,
   for_const_center_x
 ) {
+  draw_ABCDE_TF(num_question_for_each_line,start_of_this_rect,lst,  step_x,for_const_center_x
+  )
   draw_123(
     num_q_for_this_rect,
     num_question_for_each_line,
@@ -44,7 +48,6 @@ function draw_MSQ(
     start_of_counting,
     step_x
   );
-  //draw_ABCD(start_of_this_rect);
   draw_circles(
     isColored,
     color,
@@ -62,15 +65,15 @@ function draw_MSQ(
 export function checkAndDrawMSQ(isColored,png, num_MSQ) {
   num_question = num_MSQ;
   let perivious_element = end_of_sections[end_of_sections.length - 1];
-  doc.text("MSQ", 280, perivious_element + margin_y / 2);
+  doc.fillColor('black').text("MSQ", 280, perivious_element + margin_y / 2);
 
   let start_of_rect;
   const start_of_rec = perivious_element + margin_y;
   let [num_question_for_each_colum, rest_questions] =
     get_num_question_for_each_colum(num_question, num_question_for_each_line);
   let hight_of_rect =
-    (num_question_for_each_colum + 1) * (radios * 2) +
-    (num_question_for_each_colum + 1) * distance_btn_circle;
+    (num_question_for_each_colum + 2) * (radios * 2) +
+    (num_question_for_each_colum + 2) * distance_btn_circle;
   if (
     hight_of_rect <=
     high_of_A4 - start_of_rec - margin_border_y - margin_y - radios * 2
@@ -114,12 +117,12 @@ export function checkAndDrawMSQ(isColored,png, num_MSQ) {
 
     let num_ques_for_first_rect;
 
-    if (higt_of_first_rect < radios * 4 + 3 * distance_btn_circle) {
+    if (higt_of_first_rect < radios * 6 + 4 * distance_btn_circle) {
       num_ques_for_first_rect = 0;
     } else {
       let start_of_first_rect = start_of_rec;
       let num_ques_for_each_colum_of_first_rect =
-        Math.floor(higt_of_first_rect / (2 * radios + distance_btn_circle)) - 2;
+        Math.floor(higt_of_first_rect / (2 * radios + distance_btn_circle)) - 3;
       num_ques_for_first_rect =
         num_ques_for_each_colum_of_first_rect * num_question_for_each_line;
       doc.rect(
@@ -154,7 +157,7 @@ export function checkAndDrawMSQ(isColored,png, num_MSQ) {
       Math.floor(
         (high_of_A4 - margin_border_y * 2 - margin_y * 2) /
           (2 * radios + distance_btn_circle)
-      ) - 2;
+      ) - 3;
     let num_ques_for_A4_page =
       num_question_for_each_line * num_ques_for_each_colum_for_allA4page; //116;
     let num_of_remining_A4_pages = Math.ceil(
@@ -176,8 +179,8 @@ export function checkAndDrawMSQ(isColored,png, num_MSQ) {
         );
 
       let higt_of_rect =
-        (num_ques_for_each_colum_of_rect + 1) * (radios * 2) +
-        (num_ques_for_each_colum_of_rect + 1) * distance_btn_circle;
+        (num_ques_for_each_colum_of_rect + 2) * (radios * 2) +
+        (num_ques_for_each_colum_of_rect + 2) * distance_btn_circle;
       console.log(higt_of_rect);
 
       add_new_page(png,isColored);

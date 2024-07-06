@@ -40,8 +40,10 @@ bwipjs.toBuffer(barcodeOptions, (err, png) => {
 
   add_new_page(png,isColored)
 
-let num_MSQ=80;
-let num_TF=45;
+
+
+let num_MSQ=56;
+let num_TF=30;
 
 
   checkAndDrawMSQ(isColored,png,num_MSQ);

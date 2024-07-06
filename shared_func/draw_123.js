@@ -1,7 +1,7 @@
 import {doc,margin_border_x,margin_x} from '../shared_parameter.js';
 
 
-let radios = 5;
+let radios = 10;
 let distance_btn_circle = 8;
 
 export function draw_123(
@@ -18,6 +18,7 @@ export function draw_123(
     let x = 1;
     let temp = num_question_for_each_colum_of_this_rect - 1;
     let center_x = margin_border_x + margin_x + radios + 1;
+    let const_center_y=start_of_this_rect+(radios * 2 + distance_btn_circle);
     while (x <= num_question_for_each_line) {
       if (x > rest_questions && rest_questions != 0)
         num_question_for_each_colum_of_this_rect = temp;
@@ -28,7 +29,7 @@ export function draw_123(
         i++
       ) {
         let center_y =
-          start_of_this_rect + i * (radios * 2 + distance_btn_circle);
+        const_center_y + i * (radios * 2 + distance_btn_circle);
   
         doc.fontSize(10);
         doc.text(

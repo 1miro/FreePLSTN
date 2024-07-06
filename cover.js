@@ -30,7 +30,7 @@ export const addCoverToDoc = (isColored,university, subject, time, code) => {
       doc.image(png, barcodeX, barcodeYTop, { width: 100, height: 30 });
     };
   
-    doc.rect(150,12,20,20);doc.fontSize(18).text("1",156,17);if(isColored){doc.fillColor('brown').fill()};doc.stroke();
+    doc.rect(270,10,30,23);doc.fontSize(20).text("1",280,15);if(isColored){doc.fillColor('brown').fill()};doc.stroke();
 
     border_arucomarker();
 
@@ -75,7 +75,7 @@ export const addCoverToDoc = (isColored,university, subject, time, code) => {
   
   // University and Exam Information with logo
   doc.image('tanta_univ.png', 400, 50, { width: 80, height: 80 });//the pic will be dynamic 
-  doc.fontSize(20).text(`${university}`,150,80);
+  doc.fillColor('black').fontSize(20).text(`${university}`,150,80);
   doc.moveDown(2);
   
   // Student Information Box
@@ -86,12 +86,12 @@ export const addCoverToDoc = (isColored,university, subject, time, code) => {
   doc.rect(infoBoxX  , infoBoxY  , infoBoxWidth  , infoBoxHeight).stroke();
   
   doc.fontSize(14);
-  doc.text('Name:', infoBoxX + 10, infoBoxY + 20, { rtl: true });
-  doc.text('S.Number:', infoBoxX + 10, infoBoxY + 50, { rtl: true });
-  doc.text('Level:', infoBoxX + 10, infoBoxY + 100, { rtl: true });
-  doc.text('Department:', infoBoxX + 10, infoBoxY + 130, { rtl: true });
-  doc.text('Date:', infoBoxX + 10, infoBoxY + 160, { rtl: true });
-  doc.text('Subject:', infoBoxX + 10, infoBoxY + 190, { rtl: true });
+  doc.fillColor('black').text('Name:', infoBoxX + 10, infoBoxY + 20, { rtl: true });
+  doc.fillColor('black').text('S.Number:', infoBoxX + 10, infoBoxY + 50, { rtl: true });
+  doc.fillColor('black').text('Level:', infoBoxX + 10, infoBoxY + 100, { rtl: true });
+  doc.fillColor('black').text('Department:', infoBoxX + 10, infoBoxY + 130, { rtl: true });
+  doc.fillColor('black').text('Date:', infoBoxX + 10, infoBoxY + 160, { rtl: true });
+  doc.fillColor('black').text('Subject:', infoBoxX + 10, infoBoxY + 190, { rtl: true });
   
   doc.rect(infoBoxX + 90, infoBoxY + 5 , 410, 25);if(isColored){doc.fillColor(quesColors.pop()).fill();doc.stroke();}
   doc.rect(infoBoxX + 90, infoBoxY + 35 , 410, 25);if(isColored){doc.fillColor(quesColors.pop()).fill();doc.stroke();}
@@ -128,23 +128,23 @@ export const addCoverToDoc = (isColored,university, subject, time, code) => {
   const instructionsBoxHeight = 400;
   doc.rect(instructionsBoxX, instructionsBoxY, instructionsBoxWidth, instructionsBoxHeight).stroke();
   
-  doc.fontSize(14).text('Instructions For Student Number:', instructionsBoxX + 10, instructionsBoxY + 10, { underline: true });
-  doc.text('1. Write your seat number in the space provided. ', instructionsBoxX + 10, instructionsBoxY + 35);
-  doc.text('2. Shade your seat number from right (ones) to left (thousands).', instructionsBoxX + 10, instructionsBoxY + 55);
-  doc.text('3. (Important!) you must re-highlight your seat number on all test papers.', instructionsBoxX + 10, instructionsBoxY + 75);
-  doc.text('4. Make sure you have all the answer sheets and check their number.', instructionsBoxX + 10, instructionsBoxY + 95);
-  doc.text(`5. Time allotted: ${time} hours.`, instructionsBoxX + 10, instructionsBoxY + 115);
-  doc.fontSize(14).text('Instructions For MCQ , T/F:', instructionsBoxX + 10, instructionsBoxY + 140, { underline: true });
-  doc.text('1. Use only a blue or black pen to fill out the answer sheet', instructionsBoxX + 10, instructionsBoxY + 165);
-  doc.text('2. Do not use correction fluid.', instructionsBoxX + 10, instructionsBoxY + 185);
-  doc.text('3. Choose the correct answer by completely filling the selected bubble.', instructionsBoxX + 10, instructionsBoxY + 205);
-  doc.text('4. If you make a mistake. Don not pick another choice', instructionsBoxX + 10, instructionsBoxY + 225);
-  doc.text('5. Answer all multiple-choice questions by marking the correct bubble.', instructionsBoxX + 10, instructionsBoxY + 245);
-  doc.text('6. Ensure that all answers are clear and legible.', instructionsBoxX + 10, instructionsBoxY + 265);
-  doc.fontSize(14).text('Instructions For Text:', instructionsBoxX + 10, instructionsBoxY + 290, { underline: true });
-  doc.text('1. Make sure to answer in the designated spaces.', instructionsBoxX + 10, instructionsBoxY + 315);
-  doc.text('2. Do not answer outside the framework allocated for each question.', instructionsBoxX + 10, instructionsBoxY + 335);
-  doc.text('3. If you answer outside the designated answer box, it will not be accepted.', instructionsBoxX + 10, instructionsBoxY + 355);
+  doc.fillColor('black').fontSize(14).text('Instructions For Student Number:', instructionsBoxX + 10, instructionsBoxY + 10, { underline: true });
+  doc.fillColor('black').text('1. Write your seat number in the space provided. ', instructionsBoxX + 10, instructionsBoxY + 35);
+  doc.fillColor('black').text('2. Shade your seat number from right (ones) to left (thousands).', instructionsBoxX + 10, instructionsBoxY + 55);
+  doc.fillColor('black').text('3. (Important!) you must re-highlight your seat number on all test papers.', instructionsBoxX + 10, instructionsBoxY + 75);
+  doc.fillColor('black').text('4. Make sure you have all the answer sheets and check their number.', instructionsBoxX + 10, instructionsBoxY + 95);
+  doc.fillColor('black').text(`5. Time allotted: ${time} hours.`, instructionsBoxX + 10, instructionsBoxY + 115);
+  doc.fillColor('black').fontSize(14).text('Instructions For MCQ , T/F:', instructionsBoxX + 10, instructionsBoxY + 140, { underline: true });
+  doc.fillColor('black').text('1. Use only a blue or black pen to fill out the answer sheet', instructionsBoxX + 10, instructionsBoxY + 165);
+  doc.fillColor('black').text('2. Do not use correction fluid.', instructionsBoxX + 10, instructionsBoxY + 185);
+  doc.fillColor('black').text('3. Choose the correct answer by completely filling the selected bubble.', instructionsBoxX + 10, instructionsBoxY + 205);
+  doc.fillColor('black').text('4. If you make a mistake. Don not pick another choice', instructionsBoxX + 10, instructionsBoxY + 225);
+  doc.fillColor('black').text('5. Answer all multiple-choice questions by marking the correct bubble.', instructionsBoxX + 10, instructionsBoxY + 245);
+  doc.fillColor('black').text('6. Ensure that all answers are clear and legible.', instructionsBoxX + 10, instructionsBoxY + 265);
+  doc.fillColor('black').fontSize(14).text('Instructions For Text:', instructionsBoxX + 10, instructionsBoxY + 290, { underline: true });
+  doc.fillColor('black').text('1. Make sure to answer in the designated spaces.', instructionsBoxX + 10, instructionsBoxY + 315);
+  doc.fillColor('black').text('2. Do not answer outside the framework allocated for each question.', instructionsBoxX + 10, instructionsBoxY + 335);
+  doc.fillColor('black').text('3. If you answer outside the designated answer box, it will not be accepted.', instructionsBoxX + 10, instructionsBoxY + 355);
   
 
   

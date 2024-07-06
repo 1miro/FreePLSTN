@@ -7,7 +7,7 @@ import {doc} from '../shared_parameter.js';
 let page_num=2;
 
 function create_page_num(isColored){
-  doc.rect(150,12,18,18);doc.fontSize(15).text(page_num,156,17);if(isColored){doc.fillColor('brown').fill();}doc.stroke();
+  doc.rect(270,10,30,23);doc.fontSize(20).text(page_num,280,15);if(isColored){doc.fillColor('brown').fill();}doc.stroke();
   page_num+=1;
 
 }
@@ -16,6 +16,6 @@ export function add_new_page(png,isColored) {
     create_page_num(isColored)
     student_number(isColored);
     border_arucomarker();
-    addBarcodeToPage(png);
+    //addBarcodeToPage(png);
   }
 

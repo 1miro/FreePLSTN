@@ -16,7 +16,7 @@ export function draw_text_box(isColored,num_of_lines, ques_name,png) {
       high_of_A4 - start_of_rect - margin_y - margin_border_y;
 
     if (hight_of_rect <= rest_high_for_page) {
-      doc.text(ques_name, 280, perivious_element + margin_y / 2);
+      doc.fillColor('black').text(ques_name, 280, perivious_element + margin_y / 2);
       doc.rect(
         margin_border_x + margin_x,
         start_of_rect,
@@ -45,7 +45,7 @@ export function draw_text_box(isColored,num_of_lines, ques_name,png) {
       let higt_of_first_rect =rest_high_for_page -margin_y;
 
       if (higt_of_first_rect>=10){
-        doc.text(ques_name, 280, perivious_element + margin_y / 2);
+        doc.fillColor('black').text(ques_name, 280, perivious_element + margin_y / 2);
         temp=false;
         doc.rect(
           margin_border_x + margin_x,
