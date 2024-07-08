@@ -79,11 +79,11 @@ export function checkAndDrawTF(isColored,png,num_TF) {
       width_of_A4 - 2 * margin_border_x - 2 * margin_x,
       hight_of_rect
     ); if (isColored){
-      doc.fillColor('red').fill();}
+      doc.fillColor('#800000').fill();}
     doc.stroke();
     draw_TF(
       isColored,
-      'red',
+      '#800000',
       num_question_TF,
       num_question_for_each_line_TF,
       num_question_for_each_colum,
@@ -121,12 +121,12 @@ export function checkAndDrawTF(isColored,png,num_TF) {
         width_of_A4 - margin_border_x * 2 - margin_x * 2,
         higt_of_first_rect
       ); if (isColored){
-        doc.fillColor('red').fill();} //.fillColor('purple').fill();
+        doc.fillColor('#800000').fill();} //.fillColor('purple').fill();
       doc.stroke();
 
       draw_TF(
         isColored,
-        'red',
+        '#800000',
         num_ques_for_first_rect,
         num_question_for_each_line_TF,
         num_ques_for_each_colum_of_first_rect,
@@ -180,11 +180,11 @@ export function checkAndDrawTF(isColored,png,num_TF) {
         width_of_A4 - margin_border_x * 2 - margin_x * 2,
         higt_of_rect
       ); if (isColored){
-        doc.fillColor('red').fill();} //.fillColor('purple').fill();
+        doc.fillColor('#800000').fill();} //.fillColor('purple').fill();
       doc.stroke();
       draw_TF(
         isColored,
-        'red',
+        '#800000',
         num_ques_for_rect,
         num_question_for_each_line_TF,
         num_ques_for_each_colum_of_rect,

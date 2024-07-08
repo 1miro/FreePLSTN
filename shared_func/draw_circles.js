@@ -41,7 +41,6 @@ export function draw_circles(
           center_x = const_center_x + j * (2 * radios + distance_btn_circle);
           doc.circle(center_x, center_y, radios);if(isColored){doc.fillColor(color).fill();doc.stroke();}
           doc.fontSize(8);
-          //doc.text(`${lst[j]}`, center_x - 3, center_y - 3);
   
           doc.stroke();
         }

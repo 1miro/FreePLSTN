@@ -86,11 +86,11 @@ export function checkAndDrawMSQ(isColored,png, num_MSQ) {
       hight_of_rect
     );
     if(isColored){
-      doc.fillColor('purple').fill();
+      doc.fillColor('#00FFFF').fill();
     } ;    doc.stroke();
     draw_MSQ(
       isColored,
-      'purple',
+      '#00FFFF',
       num_question,
       num_question_for_each_line,
       num_question_for_each_colum,
@@ -131,13 +131,13 @@ export function checkAndDrawMSQ(isColored,png, num_MSQ) {
         width_of_A4 - margin_border_x * 2 - margin_x * 2,
         higt_of_first_rect
       );    if(isColored){
-        doc.fillColor('purple').fill();
+        doc.fillColor('#00FFFF').fill();
       }
       doc.stroke();
 
       draw_MSQ(
         isColored,
-        'purple',
+        '#00FFFF',
         num_ques_for_first_rect,
         num_question_for_each_line,
         num_ques_for_each_colum_of_first_rect,
@@ -193,12 +193,12 @@ export function checkAndDrawMSQ(isColored,png, num_MSQ) {
         width_of_A4 - margin_border_x * 2 - margin_x * 2,
         higt_of_rect
       );    if(isColored){
-        doc.fillColor('purple').fill();
+        doc.fillColor('#00FFFF').fill();
       } 
       doc.stroke();
       draw_MSQ(
         isColored,
-        'purple',
+        '#00FFFF',
         num_ques_for_rect,
         num_question_for_each_line,
         num_ques_for_each_colum_of_rect,

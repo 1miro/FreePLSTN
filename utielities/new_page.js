@@ -7,9 +7,8 @@ import {doc} from '../shared_parameter.js';
 let page_num=2;
 
 function create_page_num(isColored){
-  doc.rect(270,10,30,23);doc.fontSize(20).text(page_num,280,15);if(isColored){doc.fillColor('brown').fill();}doc.stroke();
+  doc.fillColor('black').fontSize(20).text(page_num,280,15);doc.stroke();
   page_num+=1;
-
 }
 export function add_new_page(png,isColored) {
     doc.addPage({ size: "A4" });

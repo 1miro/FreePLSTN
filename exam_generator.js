@@ -42,7 +42,7 @@ bwipjs.toBuffer(barcodeOptions, (err, png) => {
 
 
 
-let num_MSQ=56;
+let num_MSQ=30;
 let num_TF=30;
 
 
@@ -51,7 +51,15 @@ let num_TF=30;
 
   draw_text_box(isColored,50, "q1",png);
   draw_text_box(isColored,40, "q2",png);
-  draw_text_box(isColored,25, "q3",png);
+  draw_text_box(isColored,35, "q3",png);
+  //draw_text_box(isColored,15, "q4",png);
+  //draw_text_box(isColored,65, "q5",png);
+//   draw_text_box(isColored,25, "q6",png);
+//   draw_text_box(isColored,25, "q7",png);
+//   draw_text_box(isColored,25, "q8",png);
+//   draw_text_box(isColored,25, "q9",png);
+//  draw_text_box(isColored,25, "q10",png);
+
 
   /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

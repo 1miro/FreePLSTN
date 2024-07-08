@@ -30,7 +30,7 @@ export const addCoverToDoc = (isColored,university, subject, time, code) => {
       doc.image(png, barcodeX, barcodeYTop, { width: 100, height: 30 });
     };
   
-    doc.rect(270,10,30,23);doc.fontSize(20).text("1",280,15);if(isColored){doc.fillColor('brown').fill()};doc.stroke();
+    doc.fillColor('black').fontSize(20).text("1",280,15);doc.stroke();
 
     border_arucomarker();
 

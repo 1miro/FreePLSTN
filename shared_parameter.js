@@ -11,7 +11,7 @@ export const id_color=["#FF0000",
   "#00FF00",
   "#0000FF",
   "#FFFF00",
-  "#00FFFF"]
+  "#FF00FF"]
 
 export const quesColors =[,
     "#FF00FF",
@@ -41,16 +41,16 @@ export const quesColors =[,
     "#DC143C",
     "#FF7F50",
     "#F0E68C",
-    "#DDA0DD",
-    "#FA8072",
-    "#D2691E",
-    "#CD853F",
-    "#D8BFD8",
-    "#ADD8E6",
-    "#E6E6FA",
-    "#FFC0CB",
-    "#FF69B4",
-    "#FF1493",
+    "#8B0000",//10
+    "#A52A2A",//q9
+    "#FF6347",//q8
+    "#FFA500",//q7
+    "#4B0082",//q6
+    "#000080",//q5
+    "#008080",//q4
+    "#008000",//q3
+    "#800080",//q2
+    "#808000",//q1begin fot text question
     "#B22222",
     "#FF8C00",
     "#F08080",

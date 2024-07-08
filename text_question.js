@@ -93,7 +93,7 @@ export function draw_text_box(isColored,num_of_lines, ques_name,png) {
         add_new_page(png,isColored);
         if(temp){
           temp=false;
-          doc.text(ques_name, 280, perivious_element + margin_y / 2);
+          doc.fillColor("black").text(ques_name, 280, perivious_element + margin_y / 2);
         }
 
         //doc.text(ques_name, 280, perivious_element + margin_y / 2);
